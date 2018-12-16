@@ -22,3 +22,27 @@
  
 [debug] [2018-12-16T06:17:22.411Z] <<< HTTP RESPONSE 200
 [info] +  hosting: Local server: http://localhost:5000
+[debug] [2018-12-16T11:51:48.409Z] ----------------------------------------------------------------------
+[debug] [2018-12-16T11:51:48.411Z] Command:       C:\nodejs\node.exe C:\Users\san\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2018-12-16T11:51:48.412Z] CLI Version:   6.1.2
+[debug] [2018-12-16T11:51:48.412Z] Platform:      win32
+[debug] [2018-12-16T11:51:48.412Z] Node Version:  v10.14.2
+[debug] [2018-12-16T11:51:48.412Z] Time:          Sun Dec 16 2018 14:51:48 GMT+0300 (Arabian Standard Time)
+[debug] [2018-12-16T11:51:48.412Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-12-16T11:51:48.420Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-12-16T11:51:48.420Z] > authorizing via signed-in user
+[debug] [2018-12-16T11:51:48.420Z] [iam] checking project inventory-2f1d2 for permissions ["firebase.projects.get"]
+[debug] [2018-12-16T11:51:48.422Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/inventory-2f1d2:testIamPermissions  
+
+[debug] [2018-12-16T11:51:51.492Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-16T11:51:51.495Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/inventory-2f1d2  
+ 
+[debug] [2018-12-16T11:51:53.941Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\san\Documents\Inventory'...
+[info] 
+[debug] [2018-12-16T11:51:53.949Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/626362372991/clients/_:getWebAppConfig  
+ 
+[debug] [2018-12-16T11:51:59.301Z] <<< HTTP RESPONSE 200
+[info] +  hosting: Local server: http://localhost:5000
