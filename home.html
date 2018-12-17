@@ -2,6 +2,19 @@
 <html>
 <head>
   <title>Login</title>
+  <!-- bootstrap related files -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+  <!-- jquery import -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <!-- font awesome for the icons -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+  
+  <!-- custom styles -->
+  <link rel="stylesheet" href="styles.css" >
   <!-- Firebase App is always required and must be first -->
   <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
@@ -11,6 +24,7 @@
   <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
   <!-- <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-functions.js"></script> -->
   <script>
+    
     // Initialize Firebase
     // TODO: Replace with your project's customized code snippet
     var config = {
@@ -41,7 +55,7 @@
       },
       // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
       signInFlow: 'redirect',
-      signInSuccessUrl: '/page.html',
+      signInSuccessUrl: '/home.html',
       signInOptions: [
         // Leave the lines as is for the providers you want to offer your users.
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -52,9 +66,9 @@
         // firebase.auth.PhoneAuthProvider.PROVIDER_ID
       ],
       // Terms of service url.
-      tosUrl: '<your-tos-url>',
+      // tosUrl: '<your-tos-url>',
       // Privacy policy url.
-      privacyPolicyUrl: '<your-privacy-policy-url>'
+      // privacyPolicyUrl: '<your-privacy-policy-url>'
     };
     // The start method will wait until the DOM is loaded.
     ui.start('#firebaseui-auth-container', uiConfig);
@@ -84,21 +98,47 @@
       var provider = new firebase.auth.GoogleAuthProvider();
       firebase.auth().signInWithRedirect(provider);
     }
+    function logout() {
+      firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+      }).catch(function(error) {
+        // An error happened.
+      });
+    }
 
+    $('#firebaseui-auth-container').hide();  
+    
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         console.log(user.email);
+        $('#firebaseui-auth-container').hide();
+        $('#btn-logout').show();
       } else {
         console.log('not user');
+        $('#firebaseui-auth-container').show();
+        $('#btn-logout').hide();
       }
+      $('#loader').hide();
     });
 
+
+    $( document ).ready(function() {
+        console.log( "document loaded" );
+        $('#loader').show();
+    });
+ 
+    $( window ).on( "load", function() {
+        console.log( "window loaded" );
+    });
   </script>
 </head>
 <body>
   <h1>Welcome to My Awesome App</h1>
-  <div id="firebaseui-auth-container"></div>
+  <div id="firebaseui-auth-container" style="display: none;"></div>
   <div id="loader">Loading...</div>
-  <input type="button" value="Login with google" onclick="login();"/>
+  <!-- <input type="button" value="Login with google" onclick="login();"/><br> -->
+  <button id="btn-logout" class="btn btn-success" style="display: none;"
+    onclick="logout();"> Logout </button>
+
 </body>
 </html>
