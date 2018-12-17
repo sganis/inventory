@@ -1,8 +1,11 @@
 // Initialize Cloud Firestore through Firebase
 console.log('initializing...');
+const db = firebase.firestore();
+const settings = { timestampsInSnapshots: true };
+db.settings(settings);
+const itemsRef = db.collection("items");
 
-var db = firebase.firestore();
-var itemsRef = db.collection("items");
+
 var categories = ['WHITE', 'PINK', 'BLACK','RED'];  
 
 // for(var i = 0; i<10; i++) {

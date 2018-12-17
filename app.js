@@ -1,6 +1,10 @@
 // Initialize Cloud Firestore through Firebase
-var db = firebase.firestore();
-var itemsRef = db.collection("items");
+// var db = firebase.firestore();
+// var settings = {
+//     timestampsInSnapshots: true
+// };
+// db.settings(settings);
+// var itemsRef = db.collection("items");
 
 
 $(document ).ready(function() {
