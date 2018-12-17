@@ -4,10 +4,11 @@ var itemsRef = db.collection("items");
 
 
 $(document ).ready(function() {
+    $('.itemForm').hide();
     //get all the data on app startup
     $('#createEmployee').click(function(){
-        $('.employeeForm').css("display", "block");
-        $('#dynamicBtn').text('Save Changes')
+        $('.itemForm').show();
+        $('#dynamicBtn').text('Save')
     });
 
     $('#dynamicBtn').click(function(){
@@ -17,23 +18,22 @@ $(document ).ready(function() {
         var category = $("#category").val();
 
         //check if you need to create or update an employee
-        if($(this).text() == "Save Changes"){
+        if($(this).text() == "Save"){
             // Add an employee with document name as (first letter of firstname).(lastname)
             // Example: Ervis Trupja -> E.Trupja
             var docuName = name;
             db.collection("items").doc(docuName).set({
                 name: name,
                 quantity: quantity,
-                category: category,
-                
+                category: category                
             })
             .then(function(docRef) {
-                 $('#operationStatus').html('<div class="alert alert-success"><strong>Success!</strong> Employee was created!</div>').delay(2500).fadeOut('slow');
-                 $('.employeeForm').css("display", "none");
+                 $('#operationStatus').html('<div class="alert alert-success"><strong>Success!</strong> Item was created!</div>').delay(2500).fadeOut('slow');
+                 $('.itemForm').hide();
                  LoadData();
             })
             .catch(function(error) {
-                $('#operationStatus').html('<div class="alert alert-danger"><strong>Error!</strong> Employee was not created!</div>').delay(2500).fadeOut('slow');
+                $('#operationStatus').html('<div class="alert alert-danger"><strong>Error!</strong> Item was not created!</div>').delay(2500).fadeOut('slow');
             });
         }
         else{
@@ -48,7 +48,7 @@ $(document ).ready(function() {
             })
             .then(function() {
                 $('#operationStatus').html('<div class="alert alert-success"><strong>Success!</strong> Employee was updated.</div>').delay(2500).fadeOut('slow');
-                $('.employeeForm').css("display", "none");
+                $('.itemForm').hide();
                 LoadData();
             })
             .catch(function(error) {
@@ -59,13 +59,13 @@ $(document ).ready(function() {
 
     // Cancel the Employee form
     $('#cancel').click(function(){
-        $('.employeeForm').css("display", "none");
+        $('.itemForm').hide();
     });
 
     // Get the data of the employee you want to edit
     $("tbody.tbodyData").on("click","td.editEmployee", function(){
-        $('.employeeForm').css("display", "block");
-        $('#dynamicBtn').text('Update Employee');
+        $('.itemForm').show();
+        $('#dynamicBtn').text('Update');
 
         $("#name").val($(this).closest('tr').find('.name').text());
         $("#quantity").val($(this).closest('tr').find('.quantity').text());
@@ -76,17 +76,15 @@ $(document ).ready(function() {
     $("tbody.tbodyData").on("click","td.deleteEmployee", function(){
 
         //Get the Employee Data
-        var fName = $(this).closest('tr').find('.fname').text(); //First Name
-        var lName = $(this).closest('tr').find('.lname').text(); //Last Name
-
+        var name = $(this).closest('tr').find('.name').text(); //First Name
+        
         // Create a reference to the document by following the same pattern of the document name.
         // Example: Ervis Trupja -> E.Trupja
-        var docuName = fName.charAt(0)+"."+lName;
-        db.collection("items").doc(docuName).delete().then(function() {
-            $('#operationStatus').html('<div class="alert alert-success"><strong>Success!</strong> Employee was deleted.</div>').delay(2500).fadeOut('slow');
+        db.collection("items").doc(name).delete().then(function() {
+            $('#operationStatus').html('<div class="alert alert-success"><strong>Success!</strong> Item was deleted.</div>').delay(2500).fadeOut('slow');
             LoadData();
         }).catch(function(error) {
-            $('#operationStatus').html('<div class="alert alert-danger"><strong>Failure!</strong> Employee was not deleted.</div>').delay(2500).fadeOut('slow');
+            $('#operationStatus').html('<div class="alert alert-danger"><strong>Failure!</strong> Item was not deleted.</div>').delay(2500).fadeOut('slow');
         });
     });
 
@@ -103,8 +101,9 @@ $(document ).ready(function() {
 
 
       function LoadData(){
-        itemsRef.get().then(function(querySnapshot) {
-            console.log('loading data');
+        itemsRef.orderBy('category')
+            .limit(5).get().then(function(querySnapshot) {
+            console.log('loading limit data');
             LoadTableData(querySnapshot)
         });
       }

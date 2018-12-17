@@ -1,24 +1,28 @@
-[debug] [2018-12-17T04:33:10.838Z] ----------------------------------------------------------------------
-[debug] [2018-12-17T04:33:10.841Z] Command:       C:\nodejs\node.exe C:\Users\san\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
-[debug] [2018-12-17T04:33:10.841Z] CLI Version:   6.1.2
-[debug] [2018-12-17T04:33:10.841Z] Platform:      win32
-[debug] [2018-12-17T04:33:10.841Z] Node Version:  v10.14.2
-[debug] [2018-12-17T04:33:10.842Z] Time:          Mon Dec 17 2018 07:33:10 GMT+0300 (Arabian Standard Time)
-[debug] [2018-12-17T04:33:10.842Z] ----------------------------------------------------------------------
+[debug] [2018-12-17T07:18:28.633Z] ----------------------------------------------------------------------
+[debug] [2018-12-17T07:18:28.636Z] Command:       C:\nodejs\node.exe C:\Users\san\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2018-12-17T07:18:28.636Z] CLI Version:   6.1.2
+[debug] [2018-12-17T07:18:28.636Z] Platform:      win32
+[debug] [2018-12-17T07:18:28.636Z] Node Version:  v10.14.2
+[debug] [2018-12-17T07:18:28.637Z] Time:          Mon Dec 17 2018 10:18:28 GMT+0300 (Arabian Standard Time)
+[debug] [2018-12-17T07:18:28.637Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-12-17T04:33:10.849Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-12-17T04:33:10.849Z] > authorizing via signed-in user
-[debug] [2018-12-17T04:33:10.849Z] [iam] checking project inventory-2f1d2 for permissions ["firebase.projects.get"]
-[debug] [2018-12-17T04:33:10.851Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/inventory-2f1d2:testIamPermissions  
+[debug] [2018-12-17T07:18:28.647Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-12-17T07:18:28.647Z] > authorizing via signed-in user
+[debug] [2018-12-17T07:18:28.647Z] [iam] checking project inventory-2f1d2 for permissions ["firebase.projects.get"]
+[debug] [2018-12-17T07:18:28.648Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-12-17T07:18:28.648Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2018-12-17T07:18:30.078Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-17T07:18:30.086Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/inventory-2f1d2:testIamPermissions  
 
-[debug] [2018-12-17T04:33:15.071Z] <<< HTTP RESPONSE 200
-[debug] [2018-12-17T04:33:15.074Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/inventory-2f1d2  
+[debug] [2018-12-17T07:18:34.436Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-17T07:18:34.439Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/inventory-2f1d2  
  
-[debug] [2018-12-17T04:33:17.354Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-17T07:18:36.515Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from 'C:\Users\san\Documents\Inventory'...
 [info] 
-[debug] [2018-12-17T04:33:17.361Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/626362372991/clients/_:getWebAppConfig  
+[debug] [2018-12-17T07:18:36.522Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/626362372991/clients/_:getWebAppConfig  
  
-[debug] [2018-12-17T04:33:20.080Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-17T07:18:40.068Z] <<< HTTP RESPONSE 200
 [info] +  hosting: Local server: http://localhost:5000
